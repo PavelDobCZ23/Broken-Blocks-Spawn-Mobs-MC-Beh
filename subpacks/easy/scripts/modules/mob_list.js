@@ -1,0 +1,2 @@
+const mobList = ["axolotl","bat","bee","cat","chicken","cow","dolphin","donkey","fox","glow_squid","horse","iron_golem","llama","mooshroom","mule","ocelot","parrot","pig","polar_bear","rabbit","sheep","skeleton_horse","snow_golem","squid","strider","turtle","villager","wandering_trader","wolf","zombie_horse"];
+export {mobList}
