@@ -1,7 +1,12 @@
-import { world } from "mojang-minecraft";
+import { world } from "@minecraft/server";
 import { mobList } from "./modules/mob_list.js";
 
-world.events.blockBreak.subscribe(eventData => blockBreak(eventData));
+world.events.blockBreak.subscribe(async (eventData) => {
+    const locX = eventData.block.location.x;
+    const locY = eventData.block.location.y;
+    const locZ = eventData.block.location.z;
+    await eventData.player.runCommandAsync(`summon ${randChoice(mobList)} ${locX} ${locY} ${locZ}`);
+});
 
 function randInt(min, max) {
     max++;
@@ -19,12 +24,4 @@ function randChoice(array, num) {
     } else {
         return array[randInt(0, array.length - 1)];
     }
-}
-
-function blockBreak(eventData) {
-    const brokenBlock = eventData.block;
-    const locX = brokenBlock.location.x;
-    const locY = brokenBlock.location.y;
-    const locZ = brokenBlock.location.z;
-    eventData.player.runCommand(`summon ${randChoice(mobList)} ${locX} ${locY} ${locZ}`);
 }
